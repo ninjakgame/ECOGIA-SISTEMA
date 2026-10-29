@@ -1,0 +1,20 @@
+{
+  "name": "eco-system-sqlite",
+  "version": "2.0.0",
+  "private": true,
+  "description": "EcoGuia UNINASSAU: site e API com Node.js, Express e SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "funcionario": "node criar-funcionario.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^13.0.3",
+    "express": "^4.21.2"
+  }
+}

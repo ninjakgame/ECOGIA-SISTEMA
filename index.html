@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EcoGuia UNINASSAU — Do descarte à informação</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="top"><b><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#3ddc97" stroke-width="2"/><path d="M8 14c0-3.5 2.2-5.5 6.5-5.5 0 4.2-2.2 6.5-5.5 6.5z" fill="#3ddc97"/></svg><span>Eco<i>Guia</i></span></b><a href="#como">Como funciona</a><a href="#video">Vídeo</a><a href="#catalogo">Catálogo</a><a href="#pontos">Pontos</a><a href="#conta">Meus pontos</a><a href="#assistente">Assistente</a><a href="#hardware">Lixeira</a><a href="#lir">Incentivo</a><button class="btn alt navacc" id="accBtn" type="button">Entrar</button></nav>
+
+<div class="wrap">
+<div class="hero">
+<div>
+<h1>Do descarte à <em>informação</em>.</h1>
+<p class="lead">O EcoGuia UNINASSAU liga a lixeira inteligente ao site e ao aplicativo: pesa o que você recicla, organiza os dados e mostra para onde levar cada material.</p>
+<div class="row"><a class="btn" href="#video">Ver como funciona</a><a class="btn alt" href="#assistente">Perguntar à assistente</a></div>
+</div>
+<div class="live" aria-live="polite"><p class="mu"><span class="dot"></span><span id="hLiveT">Sua participação conta</span></p><div class="big" id="hPts">Recicle</div><p class="mu" id="hSub">Entre para guardar seus descartes e acumular pontos.</p></div>
+</div>
+
+<section id="como"><h2>Como funciona</h2><p class="lead">Cinco passos, do objeto na lixeira até a orientação no celular.</p>
+<div class="steps">
+<div class="card"><h3>Descarte</h3><p class="mu">A pessoa deposita o material na lixeira da categoria certa.</p></div>
+<div class="card"><h3>Peso e local</h3><p class="mu">Uma célula de carga mede o peso. A posição vem do cadastro ou de um GPS.</p></div>
+<div class="card"><h3>Envio</h3><p class="mu">O microcontrolador manda os dados pela rede. Sem internet, guarda e reenvia depois.</p></div>
+<div class="card"><h3>Central</h3><p class="mu">Reúne lixeiras e depósitos e entrega os dados ao site e ao app.</p></div>
+<div class="card"><h3>Orientação</h3><p class="mu">Catálogo, mapa de pontos e assistente dizem como separar e onde levar.</p></div>
+</div></section>
+
+<section id="video"><h2>Mini vídeo</h2><p class="lead">Seis cenas, cerca de 30 segundos.</p>
+<div id="stage"><svg id="svg" viewBox="0 0 800 450" role="img" aria-label="Animação do fluxo do EcoGuia"></svg><div id="cap"></div></div>
+<div id="bar"><i></i></div>
+<div class="row"><button class="btn" id="pp">Pausar</button><button class="btn alt" id="rs">Rever do início</button></div></section>
+
+<section id="catalogo"><h2>Catálogo de resíduos</h2><p class="lead">Digite o nome do que você quer descartar.</p>
+<div class="row"><input id="q" placeholder="Ex.: garrafa PET, pilha, caixa de pizza" aria-label="Buscar resíduo"></div>
+<div class="row" id="chips" style="margin-top:0"></div><div class="grid" id="items"></div>
+<p class="mu" style="margin-top:12px">Confirme sempre as regras do ponto de coleta local.</p></section>
+
+<section id="pontos"><h2>Pontos de coleta</h2><p class="lead">Filtre pelo material que você tem.</p>
+<div class="row" id="pchips"></div><div class="grid" id="plist"></div>
+<p class="mu" style="margin-top:12px"><span class="tag demo">DEMO</span>Pontos fictícios. Nenhum deles existe de verdade.</p></section>
+
+<section id="conta"><h2>Meus pontos</h2><p class="lead">Crie uma conta, registre o que entregou em um ponto de coleta e troque os pontos por recompensas.</p>
+<div class="card" id="contaOut" style="margin-top:14px"><p class="mu">Carregando…</p></div>
+<p class="mu" style="margin-top:12px"><span class="tag demo">protótipo</span>Nesta versão o peso é informado por você. Com a lixeira inteligente, ele virá da célula de carga. As recompensas são demonstrativas.</p></section>
+
+<section id="assistente"><h2>Assistente ambiental</h2><p class="lead">Pergunte onde descartar, se pode reciclar ou como preparar. Ela responde só com o catálogo e os pontos acima.</p>
+<div class="card" style="margin-top:14px"><div id="chat"></div>
+<div class="row" style="margin-top:0"><input id="ask" placeholder="Ex.: onde descarto pilha?" aria-label="Pergunta" style="flex:1"><button class="btn" id="send">Perguntar</button></div>
+<div class="row" style="margin:0"><button class="chip" data-s="Preciso lavar a garrafa PET?">Preciso lavar a garrafa PET?</button><button class="chip" data-s="Onde descarto pilha?">Onde descarto pilha?</button><button class="chip" data-s="Posso reciclar fralda?">Posso reciclar fralda?</button><button class="chip" data-s="Como uma empresa pode organizar seus resíduos?">Como uma empresa organiza resíduos?</button></div>
+<p class="mu" id="aiNote"></p></div></section>
+
+<section id="hardware"><h2>Dentro da lixeira inteligente</h2><p class="lead">Protótipo de baixo custo. Um Arduino comum não tem Wi-Fi nem GPS, então usamos módulos.</p>
+<div class="grid">
+<div class="card"><h3>Microcontrolador</h3><p class="mu">ESP32 ou Arduino com Wi-Fi. Lê o sensor, monta o dado e envia.</p></div>
+<div class="card"><h3>Célula de carga + HX711</h3><p class="mu">Mede a força do peso e converte o sinal em número. Precisa de calibração.</p></div>
+<div class="card"><h3>GPS (opcional)</h3><p class="mu">Em lixeira fixa, a posição pode ser cadastrada na instalação.</p></div>
+<div class="card"><h3>Relógio e memória</h3><p class="mu">RTC e cartão SD guardam hora e leituras quando falta internet.</p></div>
+<div class="card"><h3>Fonte e caixa</h3><p class="mu">Alimentação 5 V e estrutura que protege a eletrônica.</p></div>
+<div class="card"><h3>Material da lixeira</h3><p class="mu">O peso não revela o tipo de resíduo. Por isso, uma lixeira por categoria. Identificação automática é plano futuro.</p></div></div></section>
+
+<section id="lir"><h2>Lei de Incentivo à Reciclagem (LIR)</h2>
+<div class="card" style="margin-top:14px"><p>A Lei de Incentivo à Reciclagem (LIR) é uma ferramenta estratégica para empresas e projetos que buscam impactar positivamente a sociedade e o meio ambiente. A lei permite que empresas tributadas pelo Lucro Real destinem até 1% do IRPJ devido a projetos de reciclagem aprovados, conectando benefícios fiscais a impactos reais na cadeia da reciclagem.</p></div></section>
+
+<section id="educacao"><h2>Educação ambiental em 4 ideias</h2>
+<div class="grid"><div class="card"><h3>Separe na origem</h3><p class="mu">Material limpo e seco recicla melhor.</p></div><div class="card"><h3>Enxágue rápido</h3><p class="mu">Não precisa lavar perfeitamente, só tirar restos.</p></div><div class="card"><h3>Pilhas e eletrônicos</h3><p class="mu">Nunca no lixo comum. Têm ponto específico.</p></div><div class="card"><h3>Na dúvida, pergunte</h3><p class="mu">Cada ponto de coleta tem regras próprias.</p></div></div></section>
+
+<section id="status"><h2>O que é real e o que é demonstração</h2>
+<div class="card" style="margin-top:14px"><table><tbody>
+<tr><td>Site, catálogo e busca</td><td><span class="tag">funciona aqui</span></td></tr>
+<tr><td>Assistente</td><td><span class="tag" id="aiTag">verificando…</span></td></tr>
+<tr><td>Lixeira inteligente e leituras de peso</td><td><span class="tag demo">simulado</span></td></tr>
+<tr><td>Pontos de coleta</td><td><span class="tag demo">fictícios</span></td></tr>
+<tr><td>Contas, pontos e recompensas</td><td><span class="tag demo">protótipo</span></td></tr><tr><td>Protótipo físico da lixeira</td><td><span class="tag plan">a construir</span></td></tr>
+<tr><td>Identificação automática de material</td><td><span class="tag plan">planejado</span></td></tr>
+<tr><td>Incentivo fiscal</td><td><span class="tag plan">proposta, depende de validação legal</span></td></tr></tbody></table>
+<h3 style="margin-top:16px">Incentivo fiscal (proposta conceitual)</h3>
+<p class="mu">Em estudo: cerca de 1% ligado a empresas e faixa de 1% a 6% ligada a pessoas físicas. Não é benefício existente nem garantido. Depende de análise jurídica, tributária e financeira, base de cálculo, critérios de elegibilidade e aprovação das autoridades competentes. O EcoGuia pode oferecer registros verificáveis de participação ambiental.</p></div>
+<footer>EcoGuia UNINASSAU · Hackathon 2026 · Projeto em desenvolvimento. Dados e pontos são demonstrações.</footer></section>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlgT"><form id="authForm">
+<h2 id="dlgT">Entrar</h2>
+<label class="fl" hidden>Nome completo<input id="fNome" autocomplete="name" maxlength="120"></label>
+<label class="fl">E-mail<input id="fEmail" type="email" required autocomplete="email"></label>
+<label class="fl">Senha (mínimo de 8 caracteres)<input id="fSenha" type="password" required minlength="8" maxlength="72" autocomplete="current-password"></label>
+<p class="err" id="authErr" role="alert"></p>
+<div class="row" style="margin:0"><button class="btn" id="authGo">Entrar</button><button type="button" class="btn alt" id="authSw">Criar uma conta</button><button type="button" class="chip" id="dlgX">Fechar</button></div>
+</form></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
